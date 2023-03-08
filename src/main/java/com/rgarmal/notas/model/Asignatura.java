@@ -1,27 +1,26 @@
 package com.rgarmal.notas.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
-public class Notas {
+public class Asignatura {
     
     @Id
     @GeneratedValue
     private int codigo;
 
-    @Column(nullable = false,length = 100)
-    private String titulo;
-
     @Column(nullable = false)
-    private Date fecha;
-
-    @Column(nullable = false,length = 1000)
     private String descripcion;
+
+    /*@ManyToMany(mappedBy = "asignaturas")
+    private List<Alumno> alumnos;*/
 
     public int getCodigo() {
         return codigo;
@@ -31,16 +30,6 @@ public class Notas {
         this.codigo = codigo;
     }
 
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
-    
-
     public String getDescripcion() {
         return descripcion;
     }
@@ -49,18 +38,15 @@ public class Notas {
         this.descripcion = descripcion;
     }
 
-
-    public Notas() {
+    public Asignatura() {
     }
 
-    public Notas(int codigo, String titulo, Date fecha, String descripcion) {
+    public Asignatura(int codigo, String descripcion) {
         this.codigo = codigo;
-        this.titulo = titulo;
-        this.fecha = fecha;
         this.descripcion = descripcion;
     }
 
-    public Notas(int codigo) {
+    public Asignatura(int codigo) {
         this.codigo = codigo;
     }
 
@@ -80,17 +66,17 @@ public class Notas {
             return false;
         if (getClass() != obj.getClass())
             return false;
-        Notas other = (Notas) obj;
+        Asignatura other = (Asignatura) obj;
         if (codigo != other.codigo)
             return false;
         return true;
     }
 
-    public Date getFecha() {
-        return fecha;
+    /*public List<Alumno> getAlumnos() {
+        return alumnos;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }   
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }*/
 }
